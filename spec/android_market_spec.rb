@@ -27,7 +27,7 @@ describe AndroidMarket do
   let(:category) { "BOOKS_AND_REFERENCE" }
   let(:position) { 1 }
   let(:language) { "en" }
-  let(:developer_name) { "Google Inc." }
+  let(:developer_name) { "Twitter, Inc" }
 
   describe "#get_top_selling_free_app_in_category" do
     subject { AndroidMarket.get_top_selling_free_app_in_category(category, position, language) }
