@@ -1,4 +1,5 @@
 require 'sanitize'
+require 'net/http'
 
 module AndroidMarketApi
   module Util
@@ -11,5 +12,18 @@ module AndroidMarketApi
     end
 
     module_function :sanitize
+
+    def get_content(uri)
+      url = URI.parse(uri)
+      req = Net::HTTP::Get.new(url.path)
+      res = Net::HTTP.start(url.host, url.port) {|http|
+        args = [Net::HTTP::Get.new(uri)]
+        http.request(*args)
+      }
+      res.body
+    end
+
+    module_function :get_content
+
   end
 end
