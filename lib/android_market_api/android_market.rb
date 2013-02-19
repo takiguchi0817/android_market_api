@@ -50,6 +50,24 @@ class AndroidMarket
       get_apps_in_carousel(url, xpath, language)
     end
 
+    def get_top_selling_paid_apps_in_category(category,position,language='en')
+      url = "https://play.google.com/store/apps/category/#{category}?start=#{position-1}&hl=#{language}"
+      xpath = "//div[@data-analyticsid='top-paid']//div[@class='goog-inline-block carousel-cell']"
+      get_apps_in_carousel(url, xpath, language)
+    end
+
+    def get_overall_top_selling_free_apps(position,language='en')
+      url = "https://play.google.com/store/apps/collection/topselling_free?start=#{position-1}&hl=#{language}"
+      xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
+      get_apps_in_carousel(url, xpath, language)
+    end
+
+    def get_overall_top_selling_paid_apps(position,language='en')
+      url = "https://play.google.com/store/apps/collection/topselling_paid?start=#{position-1}&hl=#{language}"
+      xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
+      get_apps_in_carousel(url, xpath, language)
+    end
+
     def get_developer_app_list(developer_name, position, language='en')
       url="https://play.google.com/store/apps/developer?id="+CGI.escape(developer_name)+"&start="+(position-1).to_s+"&hl="+language
       doc = Hpricot(open(url,'User-Agent' => 'ruby'))
