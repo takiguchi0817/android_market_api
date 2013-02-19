@@ -3,6 +3,7 @@
 require "android_market_api"
 require "rspec"
 require "pry"
+require File.expand_path(File.dirname(__FILE__) + "/../spec/matchers/array_instance_of")
 
 RSpec.configure do |config|
   # Run specs in random order to surface order dependencies. If you find an
