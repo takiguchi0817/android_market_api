@@ -27,6 +27,7 @@ module AndroidMarketApi
         http.request(req)
       }
 
+      res.value
       res.body
     end
 
