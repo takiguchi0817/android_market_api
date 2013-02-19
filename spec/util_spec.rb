@@ -17,4 +17,13 @@ EOS
     end
   end
 
+  describe "#get_content" do
+    subject{ AndroidMarketApi::Util.get_content(url) }
+
+    let(:url) { "https://github.com/" }
+
+    it{ should be_an_instance_of String }
+    it{ should_not be_empty }
+  end
+
 end
