@@ -3,6 +3,7 @@
 require "android_market_api"
 require "rspec"
 require "pry"
+require "memoist"
 require File.expand_path(File.dirname(__FILE__) + "/../spec/matchers/array_instance_of")
 
 RSpec.configure do |config|
@@ -11,4 +12,15 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # memorize AndroidMarketApi::Util.get_content
+  # because, many requests are rejected by google
+  config.before(:suite) do
+    module AndroidMarketApi
+      module Util
+        extend Memoist
+        memoize :get_content
+      end
+    end
+  end
 end
