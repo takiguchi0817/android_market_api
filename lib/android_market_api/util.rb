@@ -17,7 +17,7 @@ module AndroidMarketApi
     def get_content(url, headers = {})
       uri = URI.parse(url)
       http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl =  url.start_with?("https://") if http.respond_to?(:use_ssl=)
+      http.use_ssl = true  if url.start_with?("https://")
 
       res = http.start {|http|
         req = Net::HTTP::Get.new(url)
