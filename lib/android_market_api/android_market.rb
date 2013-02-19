@@ -20,8 +20,6 @@ class AndroidMarket
   @@debug=false
 
   class << self
-    include AndroidMarketApi::Util
-
     def get_top_selling_free_app_in_category(category,position,language='en')
       url = "https://play.google.com/store/apps/category/#{category}?start=#{position-1}&hl=#{language}"
       xpath = "//div[@data-analyticsid='top-free']//div[@class='goog-inline-block carousel-cell']"
@@ -94,7 +92,7 @@ class AndroidMarket
 
     private
     def get_app_in_carousel(url, xpath, language)
-      doc = Hpricot(get_content(url,'User-Agent' => 'ruby'))
+      doc = Hpricot(open(url,'User-Agent' => 'ruby'))
       buy_div=doc.search(xpath).first
       puts "Getting Application package "+buy_div.attributes['data-docid'] if @@debug
       AndroidMarketApplication.new(buy_div.attributes['data-docid'],language)
@@ -102,7 +100,7 @@ class AndroidMarket
 
     def get_apps_in_carousel(url, xpath, language)
       apps = []
-      doc = Hpricot(get_content(url,'User-Agent' => 'ruby'))
+      doc = Hpricot(open(url,'User-Agent' => 'ruby'))
       doc.search(xpath).each do |buy_div|
         puts "Getting Application package "+buy_div.attributes['data-docid'] if @@debug
         apps << AndroidMarketApplication.new(buy_div.attributes['data-docid'],language)

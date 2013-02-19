@@ -7,7 +7,7 @@ describe AndroidMarketApplication do
   end
 
   describe "#initialize" do
-    subject{ AndroidMarketApplication.new(package, language) }
+    subject{ @app }
 
     shared_examples_for "all field applied some value" do
       its(:name)            { should     be_an_instance_of String }
@@ -45,6 +45,11 @@ describe AndroidMarketApplication do
     end
 
     context "com.twitter.android" do
+      before(:all) do
+        # call API once. because API call is very heavy!
+        @app = AndroidMarketApplication.new(package, language)
+      end
+
       let(:package)  { "com.twitter.android" }
       let(:language) { "en" }
 
@@ -57,6 +62,11 @@ describe AndroidMarketApplication do
     end
 
     context "jp.drecom.sg.nprwidget" do
+      before(:all) do
+        # call API once. because API call is very heavy!
+        @app = AndroidMarketApplication.new(package, language)
+      end
+
       let(:package)  { "jp.drecom.sg.nprwidget" }
       let(:language) { "jp" }
 

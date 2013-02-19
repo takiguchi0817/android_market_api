@@ -74,7 +74,7 @@ class AndroidMarketApplication
 
     url="https://play.google.com/store/apps/details?id="+@package+"&hl="+language
     puts "Getting URL="+url if @@debug == 1
-    doc = Hpricot(get_content(url,'User-Agent' => 'ruby'))
+    doc = Hpricot(open(url,'User-Agent' => 'ruby'))
     fill_current_version(doc.root)
     fill_rating_value(doc.root)
     fill_rating_count(doc.root)
