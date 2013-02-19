@@ -44,6 +44,9 @@ class AndroidMarket
       get_app_in_summaries(url, xpath, language)
     end
 
+    def get_top_selling_free_apps_in_category(category,position,language='en')
+    end
+
     def get_developer_app_list(developer_name, position, language='en')
       url="https://play.google.com/store/apps/developer?id="+CGI.escape(developer_name)+"&start="+(position-1).to_s+"&hl="+language
       doc = Hpricot(open(url,'User-Agent' => 'ruby'))
