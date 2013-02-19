@@ -3,6 +3,7 @@ require 'net/http'
 
 module AndroidMarketApi
   module Util
+
     # remove html tags
     # <br> -> \n
     def sanitize(str)
@@ -13,12 +14,14 @@ module AndroidMarketApi
 
     module_function :sanitize
 
-    def get_content(uri)
+    def get_content(uri, headers = {})
       url = URI.parse(uri)
-      req = Net::HTTP::Get.new(url.path)
+      req = Net::HTTP::Get.new(uri)
+      headers.each do |name, value|
+        req[name] = value
+      end
       res = Net::HTTP.start(url.host, url.port) {|http|
-        args = [Net::HTTP::Get.new(uri)]
-        http.request(*args)
+        http.request(req)
       }
       res.body
     end
