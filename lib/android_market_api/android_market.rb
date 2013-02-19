@@ -69,15 +69,9 @@ class AndroidMarket
     end
 
     def get_developer_app_list(developer_name, position, language='en')
-      url="https://play.google.com/store/apps/developer?id="+CGI.escape(developer_name)+"&start="+(position-1).to_s+"&hl="+language
-      doc = Hpricot(open(url,'User-Agent' => 'ruby'))
-      buy_lis=doc.search("li[@class='goog-inline-block']")
-      apps = Array.new
-      buy_lis.each do |buy_li|
-        puts "Getting Application package "+buy_li.attributes['data-docid'] if @@debug
-        apps << AndroidMarketApplication.new(buy_li.attributes['data-docid'],language)
-      end
-      return apps
+      url="https://play.google.com/store/apps/developer?id=#{CGI.escape(developer_name)}&start=#{position-1}&hl=#{language}"
+      xpath = "li[@class='goog-inline-block']"
+      get_apps_in_carousel(url, xpath, language)
     end
 
     def get_languages()
