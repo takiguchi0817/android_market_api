@@ -5,8 +5,7 @@ rvm:
   - 1.9.3
 gemfile:
   - Gemfile
-script: bundle exec rspec --tag ~content:real
-after_script: bundle exec rspec --tag content:real
+script: bundle exec rspec --tag ~content:real && bundle exec rspec --tag content:real
 branches:
   only:
     - master
