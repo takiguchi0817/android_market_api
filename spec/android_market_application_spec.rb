@@ -39,7 +39,7 @@ describe AndroidMarketApplication do
     its(:update_text)     { should     be_an_instance_of String }
   end
 
-  shared_examples_for :base_examples do
+  shared_examples_for :android_market_application_base_examples do
     before(:all) do
       AndroidMarketApplication.debug = false
     end
@@ -66,11 +66,11 @@ describe AndroidMarketApplication do
 
   describe "use stub content" do
     include_context :use_stub_content
-    it_behaves_like :base_examples
+    it_behaves_like :android_market_application_base_examples
   end
 
   describe "use real content", :content => "real"  do
     #include_context :save_content
-    it_behaves_like :base_examples
+    it_behaves_like :android_market_application_base_examples
   end
 end

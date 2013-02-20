@@ -28,7 +28,7 @@ describe AndroidMarket do
   let(:language) { "en" }
   let(:developer_name) { "Google Inc." }
 
-  shared_examples_for :base_examples do
+  shared_examples_for :android_market_base_examples do
     describe "#get_top_selling_free_app_in_category" do
       subject { AndroidMarket.get_top_selling_free_app_in_category(category, position, language) }
 
@@ -104,11 +104,11 @@ describe AndroidMarket do
 
   describe "use stub content" do
     include_context :use_stub_content
-    it_behaves_like :base_examples
+    it_behaves_like :android_market_base_examples
   end
 
   describe "use real content", :content => "real"  do
     #include_context :save_content
-    it_behaves_like :base_examples
+    it_behaves_like :android_market_base_examples
   end
 end
