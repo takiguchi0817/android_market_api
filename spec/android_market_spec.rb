@@ -78,6 +78,24 @@ describe AndroidMarket do
     it{ should array_instance_of AndroidMarketApplication }
   end
 
+  describe "#get_overall_topgrossing_apps" do
+    subject { AndroidMarket.get_overall_topgrossing_apps(position, language) }
+
+    it{ should array_instance_of AndroidMarketApplication }
+  end
+
+  describe "#get_overall_topselling_new_paid_apps" do
+    subject { AndroidMarket.get_overall_topselling_new_paid_apps(position, language) }
+
+    it{ should array_instance_of AndroidMarketApplication }
+  end
+
+  describe "#get_overall_topselling_new_free_apps" do
+    subject { AndroidMarket.get_overall_topselling_new_free_apps(position, language) }
+
+    it{ should array_instance_of AndroidMarketApplication }
+  end
+
   describe "#get_developer_app_list" do
     subject { AndroidMarket.get_developer_app_list(developer_name, position, language) }
 
