@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe AndroidMarket do
-  #include_context :save_content
+  include_context :use_stub_content
 
   describe "#get_application_categories" do
     subject { AndroidMarket.get_application_categories }

@@ -62,22 +62,23 @@ describe AndroidMarketApplication do
         it_behaves_like :not_null_properties
       end
 
-      context "jp.drecom.sg.nprwidget" do
-        before(:all) do
-          # call API once. because API call is very heavy!
-          @app = AndroidMarketApplication.new(package, language)
-        end
-
-        let(:package)  { "jp.drecom.sg.nprwidget" }
-        let(:language) { "jp" }
-
-        its(:package)         { should == package }
-        its(:language)        { should == language }
-        its(:name)            { should == "ちょこっとファーム　ひよこ時計" }
-        its(:developer_name)  { should == "株式会社ドリコム" }
-
-        it_behaves_like :not_null_properties
-      end
+      # TOOD あとで消す
+      #context "jp.drecom.sg.nprwidget" do
+      #  before(:all) do
+      #    # call API once. because API call is very heavy!
+      #    @app = AndroidMarketApplication.new(package, language)
+      #  end
+      #
+      #  let(:package)  { "jp.drecom.sg.nprwidget" }
+      #  let(:language) { "jp" }
+      #
+      #  its(:package)         { should == package }
+      #  its(:language)        { should == language }
+      #  its(:name)            { should == "ちょこっとファーム　ひよこ時計" }
+      #  its(:developer_name)  { should == "株式会社ドリコム" }
+      #
+      #  it_behaves_like :not_null_properties
+      #end
     end
   end
 
