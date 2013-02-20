@@ -19,6 +19,9 @@ class AndroidMarket
 
   @@debug=false
 
+  # apps in ranking page
+  APP_COUNT_IN_PAGE = 24
+
   class << self
     include AndroidMarketApi::Util
 
