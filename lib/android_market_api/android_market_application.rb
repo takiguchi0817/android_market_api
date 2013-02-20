@@ -13,7 +13,7 @@ require File.expand_path(File.dirname(__FILE__) + "/util")
 class AndroidMarketApplication
 
   attr_accessor :package, :language,:name, :current_version,:price, :rating_value, :rating_count,
-                :updated, :sdk_required, :category, :downloads, :size, :content_rating, :description,
+                :updated, :sdk_required, :category, :category_id, :downloads, :size, :content_rating, :description,
                 :screenshots, :developer_name, :icon, :update_text
 
   include AndroidMarketApi::Util
@@ -34,6 +34,7 @@ class AndroidMarketApplication
     @updated=""           # Last Update datetime
     @sdk_required=""      # SDK Required
     @category=""          # Category
+    @category_id=""       # Category ID
     @downloads=""         # Downloads
     @size=""               # Application Size
     @content_rating=""     # Content Rating
@@ -56,6 +57,7 @@ class AndroidMarketApplication
     puts " Application Updated = "+@updated.to_s
     puts " SDK required = "+@sdk_required.to_s
     puts " Category = "+@category.to_s
+    puts " Category ID= "+@category_id.to_s
     puts " Nr of Downloads = "+@downloads.to_s
     puts " Size = "+@size.to_s
     puts " Content Rating = "+@content_rating.to_s
@@ -81,6 +83,7 @@ class AndroidMarketApplication
     fill_updated_at(doc.root)
     fill_sdk_required(doc.root)
     fill_category(doc.root)
+    fill_category_id(doc.root)
     fill_downloads(doc.root)
     fill_size(doc.root)
     fill_price(doc.root)
@@ -155,6 +158,16 @@ class AndroidMarketApplication
     if element
       @category = element.next_node.next_node.next_node.at('a').inner_text
       puts "Application category="+@category.to_s   if @@debug == 1
+    end
+  end
+
+  def fill_category_id(doc)
+    element=doc.at("dt[@itemprop='operatingSystems']")
+    if element
+      category_url = element.next_node.next_node.next_node.at('a')["href"]
+      array = category_url.scan %r{/store/apps/category/(.+)\?}
+      @category_id = array[0][0]
+      puts "Application category id="+@category_id.to_s   if @@debug == 1
     end
   end
 
