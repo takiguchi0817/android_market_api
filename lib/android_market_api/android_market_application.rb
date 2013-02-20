@@ -46,7 +46,7 @@ class AndroidMarketApplication
     parse_in_android_market(language)
   end
 
-  def to_s()
+  def print()
     puts "-------------------------------------------------------------"
     puts " Application Name = "+@name.to_s
     puts " Application Package = "+@package.to_s
