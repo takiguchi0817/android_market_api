@@ -87,6 +87,7 @@ describe AndroidMarketApplication do
   end
 
   describe "use real content", :content => "real"  do
+    include_context :save_content
     it_behaves_like :base_examples
   end
 end
