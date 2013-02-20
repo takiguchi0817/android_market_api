@@ -102,4 +102,5 @@ describe AndroidMarket do
     it{ should array_instance_of AndroidMarketApplication }
   end
 
+  # TODO split context for real and stub
 end
