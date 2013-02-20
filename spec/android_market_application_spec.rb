@@ -21,6 +21,8 @@ describe AndroidMarketApplication do
     its(:sdk_required)    { should     be_an_instance_of String }
     its(:category)        { should_not be_empty }
     its(:category)        { should     be_an_instance_of String }
+    its(:category_id)     { should_not be_empty }
+    its(:category_id)     { should     be_an_instance_of String }
     its(:downloads)       { should_not be_empty }
     its(:downloads)       { should     be_an_instance_of String }
     its(:size)            { should_not be_empty }
