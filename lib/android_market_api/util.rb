@@ -13,7 +13,7 @@ module AndroidMarketApi
     module_function :sanitize
 
     def get_content(url)
-      open(url,'User-Agent' => 'ruby')
+      open(url,'User-Agent' => 'ruby').read
     end
 
     module_function :get_content
