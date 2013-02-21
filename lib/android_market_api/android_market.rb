@@ -73,19 +73,19 @@ class AndroidMarket
       get_apps_in_carousel(url, xpath, language)
     end
 
-    def get_overall_topgrossing_apps(position,language='en')
+    def get_overall_top_grossing_apps(position,language='en')
       url = "https://play.google.com/store/apps/collection/topgrossing?start=#{position-1}&hl=#{language}"
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_apps_in_carousel(url, xpath, language)
     end
 
-    def get_overall_topselling_new_paid_apps(position,language='en')
+    def get_overall_top_selling_new_paid_apps(position,language='en')
       url = "https://play.google.com/store/apps/collection/topselling_new_paid?start=#{position-1}&hl=#{language}"
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_apps_in_carousel(url, xpath, language)
     end
 
-    def get_overall_topselling_new_free_apps(position,language='en')
+    def get_overall_top_selling_new_free_apps(position,language='en')
       url = "https://play.google.com/store/apps/collection/topselling_new_free?start=#{position-1}&hl=#{language}"
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_apps_in_carousel(url, xpath, language)
