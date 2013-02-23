@@ -6,7 +6,7 @@
 # above copyright notice is included.
 
 require 'rubygems'
-require 'hpricot' 
+require 'hpricot'
 require 'open-uri'
 require 'cgi'
 require File.expand_path(File.dirname(__FILE__) + "/android_market_application")
@@ -45,6 +45,24 @@ class AndroidMarket
 
     def get_overall_top_selling_paid_app(position,language='en')
       url = "https://play.google.com/store/apps/collection/topselling_paid?start=#{position-1}&hl=#{language}"
+      xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
+      get_app_in_carousel(url, xpath, language)
+    end
+
+    def get_overall_top_grossing_app(position,language='en')
+      url = "https://play.google.com/store/apps/collection/topgrossing?start=#{position-1}&hl=#{language}"
+      xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
+      get_app_in_carousel(url, xpath, language)
+    end
+
+    def get_overall_top_selling_new_paid_app(position,language='en')
+      url = "https://play.google.com/store/apps/collection/topselling_new_paid?start=#{position-1}&hl=#{language}"
+      xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
+      get_app_in_carousel(url, xpath, language)
+    end
+
+    def get_overall_top_selling_new_free_app(position,language='en')
+      url = "https://play.google.com/store/apps/collection/topselling_new_free?start=#{position-1}&hl=#{language}"
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_app_in_carousel(url, xpath, language)
     end
