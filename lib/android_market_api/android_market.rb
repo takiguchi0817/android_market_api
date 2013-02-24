@@ -26,87 +26,59 @@ class AndroidMarket
     include AndroidMarketApi::Util
 
     def get_top_selling_free_app_in_category(category,position,language='en')
-      url = category_url(category, language, position)
-      xpath = CATEGORY_TOP_FREE_XPATH
-      get_app_in_carousel(url, xpath, language)
+      get_app_in_carousel(category_url(category, language, position), CATEGORY_TOP_FREE_XPATH, language)
     end
 
     def get_top_selling_paid_app_in_category(category,position,language='en')
-      url = category_url(category, language, position)
-      xpath = CATEGORY_TOP_PAID_XPATH
-      get_app_in_carousel(url, xpath, language)
+      get_app_in_carousel(category_url(category, language, position), CATEGORY_TOP_PAID_XPATH, language)
     end
 
     def get_overall_top_selling_free_app(position,language='en')
-      url = top_selling_free_url(position, language)
-      xpath = OVERALL_XPATH
-      get_app_in_carousel(url, xpath, language)
+      get_app_in_carousel(top_selling_free_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_overall_top_selling_paid_app(position,language='en')
-      url = top_selling_paid_url(position, language)
-      xpath = OVERALL_XPATH
-      get_app_in_carousel(url, xpath, language)
+      get_app_in_carousel(top_selling_paid_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_overall_top_grossing_app(position,language='en')
-      url = top_grossing_url(position, language)
-      xpath = OVERALL_XPATH
-      get_app_in_carousel(url, xpath, language)
+      get_app_in_carousel(top_grossing_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_overall_top_selling_new_paid_app(position,language='en')
-      url = top_selling_new_paid_url(position, language)
-      xpath = OVERALL_XPATH
-      get_app_in_carousel(url, xpath, language)
+      get_app_in_carousel(top_selling_new_paid_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_overall_top_selling_new_free_app(position,language='en')
-      url = top_selling_new_free_url(position, language)
-      xpath = OVERALL_XPATH
-      get_app_in_carousel(url, xpath, language)
+      get_app_in_carousel(top_selling_new_free_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_top_selling_free_apps_in_category(category,position,language='en')
-      url = category_url(category, language, position)
-      xpath = CATEGORY_TOP_FREE_XPATH
-      get_apps_in_carousel(url, xpath, language)
+      get_apps_in_carousel(category_url(category, language, position), CATEGORY_TOP_FREE_XPATH, language)
     end
 
     def get_top_selling_paid_apps_in_category(category,position,language='en')
-      url = category_url(category, language, position)
-      xpath = CATEGORY_TOP_PAID_XPATH
-      get_apps_in_carousel(url, xpath, language)
+      get_apps_in_carousel(category_url(category, language, position), CATEGORY_TOP_PAID_XPATH, language)
     end
 
     def get_overall_top_selling_free_apps(position,language='en')
-      url = top_selling_free_url(position, language)
-      xpath = OVERALL_XPATH
-      get_apps_in_carousel(url, xpath, language)
+      get_apps_in_carousel(top_selling_free_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_overall_top_selling_paid_apps(position,language='en')
-      url = top_selling_paid_url(position, language)
-      xpath = OVERALL_XPATH
-      get_apps_in_carousel(url, xpath, language)
+      get_apps_in_carousel(top_selling_paid_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_overall_top_grossing_apps(position,language='en')
-      url = top_grossing_url(position, language)
-      xpath = OVERALL_XPATH
-      get_apps_in_carousel(url, xpath, language)
+      get_apps_in_carousel(top_grossing_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_overall_top_selling_new_paid_apps(position,language='en')
-      url = top_selling_new_paid_url(position, language)
-      xpath = OVERALL_XPATH
-      get_apps_in_carousel(url, xpath, language)
+      get_apps_in_carousel(top_selling_new_paid_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_overall_top_selling_new_free_apps(position,language='en')
-      url = top_selling_new_free_url(position, language)
-      xpath = OVERALL_XPATH
-      get_apps_in_carousel(url, xpath, language)
+      get_apps_in_carousel(top_selling_new_free_url(position, language), OVERALL_XPATH, language)
     end
 
     def get_developer_app_list(developer_name, position, language='en')
