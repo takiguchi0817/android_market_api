@@ -26,85 +26,85 @@ class AndroidMarket
     include AndroidMarketApi::Util
 
     def get_top_selling_free_app_in_category(category,position,language='en')
-      url = "https://play.google.com/store/apps/category/#{category}?start=#{position-1}&hl=#{language}"
+      url = category_url(category, language, position)
       xpath = "//div[@data-analyticsid='top-free']//div[@class='goog-inline-block carousel-cell']"
       get_app_in_carousel(url, xpath, language)
     end
 
     def get_top_selling_paid_app_in_category(category,position,language='en')
-      url = "https://play.google.com/store/apps/category/#{category}?start=#{position-1}&hl=#{language}"
+      url = category_url(category, language, position)
       xpath = "//div[@data-analyticsid='top-paid']//div[@class='goog-inline-block carousel-cell']"
       get_app_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_selling_free_app(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topselling_free?start=#{position-1}&hl=#{language}"
+      url = top_selling_free_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_app_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_selling_paid_app(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topselling_paid?start=#{position-1}&hl=#{language}"
+      url = top_selling_paid_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_app_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_grossing_app(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topgrossing?start=#{position-1}&hl=#{language}"
+      url = top_grossing_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_app_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_selling_new_paid_app(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topselling_new_paid?start=#{position-1}&hl=#{language}"
+      url = top_selling_new_paid_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_app_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_selling_new_free_app(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topselling_new_free?start=#{position-1}&hl=#{language}"
+      url = top_selling_new_free_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_app_in_carousel(url, xpath, language)
     end
 
     def get_top_selling_free_apps_in_category(category,position,language='en')
-      url = "https://play.google.com/store/apps/category/#{category}?start=#{position-1}&hl=#{language}"
+      url = category_url(category, language, position)
       xpath = "//div[@data-analyticsid='top-free']//div[@class='goog-inline-block carousel-cell']"
       get_apps_in_carousel(url, xpath, language)
     end
 
     def get_top_selling_paid_apps_in_category(category,position,language='en')
-      url = "https://play.google.com/store/apps/category/#{category}?start=#{position-1}&hl=#{language}"
+      url = category_url(category, language, position)
       xpath = "//div[@data-analyticsid='top-paid']//div[@class='goog-inline-block carousel-cell']"
       get_apps_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_selling_free_apps(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topselling_free?start=#{position-1}&hl=#{language}"
+      url = top_selling_free_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_apps_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_selling_paid_apps(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topselling_paid?start=#{position-1}&hl=#{language}"
+      url = top_selling_paid_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_apps_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_grossing_apps(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topgrossing?start=#{position-1}&hl=#{language}"
+      url = top_grossing_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_apps_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_selling_new_paid_apps(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topselling_new_paid?start=#{position-1}&hl=#{language}"
+      url = top_selling_new_paid_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_apps_in_carousel(url, xpath, language)
     end
 
     def get_overall_top_selling_new_free_apps(position,language='en')
-      url = "https://play.google.com/store/apps/collection/topselling_new_free?start=#{position-1}&hl=#{language}"
+      url = top_selling_new_free_url(position, language)
       xpath = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
       get_apps_in_carousel(url, xpath, language)
     end
@@ -132,6 +132,30 @@ class AndroidMarket
     end
 
     private
+    def category_url(category, language, position)
+      "https://play.google.com/store/apps/category/#{category}?start=#{position-1}&hl=#{language}"
+    end
+
+    def top_selling_free_url(position, language)
+      "https://play.google.com/store/apps/collection/topselling_free?start=#{position-1}&hl=#{language}"
+    end
+
+    def top_selling_paid_url(position, language)
+      "https://play.google.com/store/apps/collection/topselling_paid?start=#{position-1}&hl=#{language}"
+    end
+
+    def top_grossing_url(position, language)
+      "https://play.google.com/store/apps/collection/topgrossing?start=#{position-1}&hl=#{language}"
+    end
+
+    def top_selling_new_paid_url(position, language)
+      "https://play.google.com/store/apps/collection/topselling_new_paid?start=#{position-1}&hl=#{language}"
+    end
+
+    def top_selling_new_free_url(position, language)
+      "https://play.google.com/store/apps/collection/topselling_new_free?start=#{position-1}&hl=#{language}"
+    end
+
     def get_app_in_carousel(url, xpath, language)
       doc = Hpricot(get_content(url))
       buy_div=doc.search(xpath).first
