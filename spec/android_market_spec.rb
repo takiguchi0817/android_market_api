@@ -129,4 +129,58 @@ describe AndroidMarket do
     #include_context :save_content
     it_behaves_like :android_market_base_examples
   end
+
+  describe "should paging", :content => "real"  do
+    context "category" do
+      let(:app1){ AndroidMarket.send(get_app, category, 1) }
+      let(:app2){ AndroidMarket.send(get_app, category, 2) }
+
+      describe "#get_top_selling_free_app_in_category" do
+        subject(:get_app){ :get_top_selling_free_app_in_category }
+
+        it{ app1.package.should_not == app2.package }
+      end
+
+      describe "#get_top_selling_paid_app_in_category" do
+        subject(:get_app){ :get_top_selling_paid_app_in_category }
+
+        it{ app1.package.should_not == app2.package }
+      end
+    end
+
+    context "overall" do
+      let(:app1){ AndroidMarket.send(get_app, 1) }
+      let(:app2){ AndroidMarket.send(get_app, 2) }
+
+      describe "#get_overall_top_selling_free_app" do
+        subject(:get_app){ :get_overall_top_selling_free_app }
+
+        it{ app1.package.should_not == app2.package }
+      end
+
+      describe "#get_overall_top_selling_paid_app" do
+        subject(:get_app){ :get_overall_top_selling_paid_app }
+
+        it{ app1.package.should_not == app2.package }
+      end
+
+      describe "#get_overall_top_grossing_app" do
+        subject(:get_app){ :get_overall_top_grossing_app }
+
+        it{ app1.package.should_not == app2.package }
+      end
+
+      describe "#get_overall_top_selling_new_paid_app" do
+        subject(:get_app){ :get_overall_top_selling_new_paid_app }
+
+        it{ app1.package.should_not == app2.package }
+      end
+
+      describe "#get_overall_top_selling_new_free_app" do
+        subject(:get_app){ :get_overall_top_selling_new_free_app }
+
+        it{ app1.package.should_not == app2.package }
+      end
+    end
+  end
 end
