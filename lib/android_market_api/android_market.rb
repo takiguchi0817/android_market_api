@@ -26,11 +26,11 @@ class AndroidMarket
     include AndroidMarketApi::Util
 
     def get_top_selling_free_app_in_category(category,position,language='en')
-      get_app_in_carousel(category_url(category, language, position), CATEGORY_TOP_FREE_XPATH, language)
+      get_app_in_carousel(category_free_url(category, language, position), CATEGORY_TOP_XPATH, language)
     end
 
     def get_top_selling_paid_app_in_category(category,position,language='en')
-      get_app_in_carousel(category_url(category, language, position), CATEGORY_TOP_PAID_XPATH, language)
+      get_app_in_carousel(category_paid_url(category, language, position), CATEGORY_TOP_XPATH, language)
     end
 
     def get_overall_top_selling_free_app(position,language='en')
@@ -54,11 +54,11 @@ class AndroidMarket
     end
 
     def get_top_selling_free_apps_in_category(category,position,language='en')
-      get_apps_in_carousel(category_url(category, language, position), CATEGORY_TOP_FREE_XPATH, language)
+      get_apps_in_carousel(category_free_url(category, language, position), CATEGORY_TOP_XPATH, language)
     end
 
     def get_top_selling_paid_apps_in_category(category,position,language='en')
-      get_apps_in_carousel(category_url(category, language, position), CATEGORY_TOP_PAID_XPATH, language)
+      get_apps_in_carousel(category_paid_url(category, language, position), CATEGORY_TOP_XPATH, language)
     end
 
     def get_overall_top_selling_free_apps(position,language='en')
@@ -102,13 +102,16 @@ class AndroidMarket
     end
 
     private
-    CATEGORY_TOP_FREE_XPATH = "//div[@data-analyticsid='top-free']//div[@class='goog-inline-block carousel-cell']"
-    CATEGORY_TOP_PAID_XPATH = "//div[@data-analyticsid='top-paid']//div[@class='goog-inline-block carousel-cell']"
+    CATEGORY_TOP_XPATH = "//li[@class='goog-inline-block']"
     OVERALL_XPATH = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
     DEVELOPER_APP_XPATH = "li[@class='goog-inline-block']"
 
-    def category_url(category, language, position)
-      "https://play.google.com/store/apps/category/#{category}?start=#{position-1}&hl=#{language}"
+    def category_free_url(category, language, position)
+      "https://play.google.com/store/apps/category/#{category}/collection/topselling_free?start=#{position-1}&hl=#{language}"
+    end
+
+    def category_paid_url(category, language, position)
+      "https://play.google.com/store/apps/category/#{category}/collection/topselling_paid?start=#{position-1}&hl=#{language}"
     end
 
     def top_selling_free_url(position, language)
