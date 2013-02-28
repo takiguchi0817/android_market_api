@@ -102,7 +102,7 @@ class AndroidMarket
     end
 
     private
-    CATEGORY_TOP_XPATH = "//li[@class='goog-inline-block']"
+    CATEGORY_TOP_XPATH = "//div[@class='num-pagination-page']//li[@class='goog-inline-block' or @class='z-last-child']"
     OVERALL_XPATH = "//div[@class='num-pagination-page']//li[@class='goog-inline-block' or @class='z-last-child']"
     DEVELOPER_APP_XPATH = "li[@class='goog-inline-block']"
 
