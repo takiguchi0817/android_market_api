@@ -103,7 +103,7 @@ class AndroidMarket
 
     private
     CATEGORY_TOP_XPATH = "//li[@class='goog-inline-block']"
-    OVERALL_XPATH = "//div[@class='num-pagination-page']//li[@class='goog-inline-block']"
+    OVERALL_XPATH = "//div[@class='num-pagination-page']//li[@class='goog-inline-block' or @class='z-last-child']"
     DEVELOPER_APP_XPATH = "li[@class='goog-inline-block']"
 
     def category_free_url(category, language, position)
