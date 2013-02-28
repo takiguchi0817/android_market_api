@@ -75,42 +75,49 @@ describe AndroidMarket do
       subject { AndroidMarket.get_top_selling_free_apps_in_category(category, position, language) }
 
       it{ should array_instance_of AndroidMarketApplication }
+      it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_top_selling_paid_apps_in_category" do
       subject { AndroidMarket.get_top_selling_paid_apps_in_category(category, position, language) }
 
       it{ should array_instance_of AndroidMarketApplication }
+      it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_selling_free_apps" do
       subject { AndroidMarket.get_overall_top_selling_free_apps(position, language) }
 
       it{ should array_instance_of AndroidMarketApplication }
+      it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_selling_paid_apps" do
       subject { AndroidMarket.get_overall_top_selling_paid_apps(position, language) }
 
       it{ should array_instance_of AndroidMarketApplication }
+      it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_grossing_apps" do
       subject { AndroidMarket.get_overall_top_grossing_apps(position, language) }
 
       it{ should array_instance_of AndroidMarketApplication }
+      it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_selling_new_paid_apps" do
       subject { AndroidMarket.get_overall_top_selling_new_paid_apps(position, language) }
 
       it{ should array_instance_of AndroidMarketApplication }
+      it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_selling_new_free_apps" do
       subject { AndroidMarket.get_overall_top_selling_new_free_apps(position, language) }
 
       it{ should array_instance_of AndroidMarketApplication }
+      it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_developer_app_list" do
