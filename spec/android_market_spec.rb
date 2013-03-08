@@ -25,103 +25,111 @@ describe AndroidMarket do
 
   let(:category) { "BOOKS_AND_REFERENCE" }
   let(:position) { 1 }
-  let(:language) { "en" }
+  let(:options) do
+    {
+        :language => "en",
+        :proxy => nil,
+        :header => {
+            "User-Agent" => "ruby",
+        }
+    }
+  end
   let(:developer_name) { "Google Inc." }
 
   shared_examples_for :android_market_base_examples do
     describe "#get_top_selling_free_app_in_category" do
-      subject { AndroidMarket.get_top_selling_free_app_in_category(category, position, language) }
+      subject { AndroidMarket.get_top_selling_free_app_in_category(category, position, options) }
 
       it{ should be_an_instance_of AndroidMarketApplication }
     end
 
     describe "#get_top_selling_paid_app_in_category" do
-      subject { AndroidMarket.get_top_selling_paid_app_in_category(category, position, language) }
+      subject { AndroidMarket.get_top_selling_paid_app_in_category(category, position, options) }
 
       it{ should be_an_instance_of AndroidMarketApplication }
     end
 
     describe "#get_overall_top_selling_free_app" do
-      subject { AndroidMarket.get_overall_top_selling_free_app(position, language) }
+      subject { AndroidMarket.get_overall_top_selling_free_app(position, options) }
 
       it{ should be_an_instance_of AndroidMarketApplication }
     end
 
     describe "#get_overall_top_selling_paid_app" do
-      subject { AndroidMarket.get_overall_top_selling_paid_app(position, language) }
+      subject { AndroidMarket.get_overall_top_selling_paid_app(position, options) }
 
       it{ should be_an_instance_of AndroidMarketApplication }
     end
 
     describe "#get_overall_top_selling_new_paid_app" do
-      subject { AndroidMarket.get_overall_top_selling_new_paid_app(position, language) }
+      subject { AndroidMarket.get_overall_top_selling_new_paid_app(position, options) }
 
       it{ should be_an_instance_of AndroidMarketApplication }
     end
 
     describe "#get_overall_top_selling_new_free_app" do
-      subject { AndroidMarket.get_overall_top_selling_new_free_app(position, language) }
+      subject { AndroidMarket.get_overall_top_selling_new_free_app(position, options) }
 
       it{ should be_an_instance_of AndroidMarketApplication }
     end
 
     describe "#get_developer_app_list" do
-      subject { AndroidMarket.get_developer_app_list(developer_name, position, language) }
+      subject { AndroidMarket.get_developer_app_list(developer_name, position, options) }
 
       it{ should array_instance_of AndroidMarketApplication }
     end
 
     describe "#get_top_selling_free_apps_in_category" do
-      subject { AndroidMarket.get_top_selling_free_apps_in_category(category, position, language) }
+      subject { AndroidMarket.get_top_selling_free_apps_in_category(category, position, options) }
 
       it{ should array_instance_of AndroidMarketApplication }
       it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_top_selling_paid_apps_in_category" do
-      subject { AndroidMarket.get_top_selling_paid_apps_in_category(category, position, language) }
+      subject { AndroidMarket.get_top_selling_paid_apps_in_category(category, position, options) }
 
       it{ should array_instance_of AndroidMarketApplication }
       it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_selling_free_apps" do
-      subject { AndroidMarket.get_overall_top_selling_free_apps(position, language) }
+      subject { AndroidMarket.get_overall_top_selling_free_apps(position, options) }
 
       it{ should array_instance_of AndroidMarketApplication }
       it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_selling_paid_apps" do
-      subject { AndroidMarket.get_overall_top_selling_paid_apps(position, language) }
+      subject { AndroidMarket.get_overall_top_selling_paid_apps(position, options) }
 
       it{ should array_instance_of AndroidMarketApplication }
       it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_grossing_apps" do
-      subject { AndroidMarket.get_overall_top_grossing_apps(position, language) }
+      subject { AndroidMarket.get_overall_top_grossing_apps(position, options) }
 
       it{ should array_instance_of AndroidMarketApplication }
       it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_selling_new_paid_apps" do
-      subject { AndroidMarket.get_overall_top_selling_new_paid_apps(position, language) }
+      subject { AndroidMarket.get_overall_top_selling_new_paid_apps(position, options) }
 
       it{ should array_instance_of AndroidMarketApplication }
       it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_overall_top_selling_new_free_apps" do
-      subject { AndroidMarket.get_overall_top_selling_new_free_apps(position, language) }
+      subject { AndroidMarket.get_overall_top_selling_new_free_apps(position, options) }
 
       it{ should array_instance_of AndroidMarketApplication }
       it{ should have_exactly(AndroidMarket::APP_COUNT_IN_PAGE).apps }
     end
 
     describe "#get_developer_app_list" do
-      subject { AndroidMarket.get_developer_app_list(developer_name, position, language) }
+      subject { AndroidMarket.get_developer_app_list(developer_name, position, options) }
 
       it{ should array_instance_of AndroidMarketApplication }
     end

@@ -22,10 +22,10 @@ class AndroidMarketApplication
   ###########################################################################################
   #  Contructor: Example Usage AndroidMarketApplication.new("com.bearstouch.smsscheduler")
   ############################################################################################
-  def initialize(package,language='en')
+  def initialize(package,options={})
 
     @package=package
-    @language=language
+    @language=options[:language] || "en"
     @name=""              # Application Name
     @current_version=""    # Application Current Version
     @price=""              # Application Price
@@ -43,7 +43,7 @@ class AndroidMarketApplication
     @icon=""              # Icon URL
     @screenshots=[]
     @update_text=""
-    parse_in_android_market(language)
+    parse_in_android_market
   end
 
   def print()
@@ -72,9 +72,9 @@ class AndroidMarketApplication
   ############################################
   # =>  Parse Default Page for your localization from Android Market
   ############################################
-  def parse_in_android_market(language)
+  def parse_in_android_market
 
-    url="https://play.google.com/store/apps/details?id="+@package+"&hl="+language
+    url="https://play.google.com/store/apps/details?id=#{@package}&hl=#{@language}"
     puts "Getting URL="+url if @@debug
     doc = Hpricot(get_content(url))
     fill_current_version(doc.root)

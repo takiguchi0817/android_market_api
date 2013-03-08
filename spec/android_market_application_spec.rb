@@ -49,14 +49,22 @@ describe AndroidMarketApplication do
 
       before(:all) do
         # call API once. because API call is very heavy!
-        @app = AndroidMarketApplication.new("com.twitter.android", "en")
+        @app = AndroidMarketApplication.new("com.twitter.android", options)
       end
 
       let(:package)  { "com.twitter.android" }
-      let(:language) { "en" }
+      let(:options) do
+        {
+            :language => "en",
+            :proxy => nil,
+            :header => {
+                "User-Agent" => "ruby",
+            }
+        }
+      end
 
       its(:package)         { should == package }
-      its(:language)        { should == language }
+      its(:language)        { should == options[:language] }
       its(:name)            { should == "Twitter" }
       its(:developer_name)  { should == "Twitter, Inc." }
 
