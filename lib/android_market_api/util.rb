@@ -12,8 +12,15 @@ module AndroidMarketApi
 
     module_function :sanitize
 
-    def get_content(url)
-      open(url,'User-Agent' => 'ruby').read
+    def get_content(url, options = {})
+      header = options[:header] ? options[:header].dup : {}
+      header["User-Agent"] ||= "ruby"
+
+      supprt_options = [:proxy, :progress_proc, :content_length_proc, :http_basic_authentication]
+      supprt_options.each do |name|
+        header[name] = options[name] if options[name]
+      end
+      open(url, header).read
     end
 
     module_function :get_content
