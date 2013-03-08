@@ -26,11 +26,11 @@ class AndroidMarket
     include AndroidMarketApi::Util
 
     def get_top_selling_free_app_in_category(category,position,options={})
-      get_app_in_carousel(category_free_url(category, options, position), CATEGORY_TOP_XPATH, options)
+      get_app_in_carousel(category_free_url(category, position, options), CATEGORY_TOP_XPATH, options)
     end
 
     def get_top_selling_paid_app_in_category(category,position,options={})
-      get_app_in_carousel(category_paid_url(category, options, position), CATEGORY_TOP_XPATH, options)
+      get_app_in_carousel(category_paid_url(category, position, options), CATEGORY_TOP_XPATH, options)
     end
 
     def get_overall_top_selling_free_app(position,options={})
@@ -54,11 +54,11 @@ class AndroidMarket
     end
 
     def get_top_selling_free_apps_in_category(category,position,options={})
-      get_apps_in_carousel(category_free_url(category, options, position), CATEGORY_TOP_XPATH, options)
+      get_apps_in_carousel(category_free_url(category, position, options), CATEGORY_TOP_XPATH, options)
     end
 
     def get_top_selling_paid_apps_in_category(category,position,options={})
-      get_apps_in_carousel(category_paid_url(category, options, position), CATEGORY_TOP_XPATH, options)
+      get_apps_in_carousel(category_paid_url(category, position, options), CATEGORY_TOP_XPATH, options)
     end
 
     def get_overall_top_selling_free_apps(position,options={})
@@ -106,12 +106,12 @@ class AndroidMarket
     OVERALL_XPATH = "//div[@class='num-pagination-page']//li[@class='goog-inline-block' or @class='z-last-child']"
     DEVELOPER_APP_XPATH = "li[@class='goog-inline-block']"
 
-    def category_free_url(category, options, position)
+    def category_free_url(category, position, options)
       language = options[:language] || "en"
       "https://play.google.com/store/apps/category/#{category}/collection/topselling_free?start=#{position-1}&hl=#{language}"
     end
 
-    def category_paid_url(category, options, position)
+    def category_paid_url(category, position, options)
       language = options[:language] || "en"
       "https://play.google.com/store/apps/category/#{category}/collection/topselling_paid?start=#{position-1}&hl=#{language}"
     end
