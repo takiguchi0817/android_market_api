@@ -4,6 +4,9 @@ require "android_market_api"
 require "rspec"
 require "pry"
 
+require 'coveralls'
+Coveralls.wear!
+
 RSpec.configure do |config|
   root_dir = File.expand_path(File.dirname(__FILE__) + "/..")
 

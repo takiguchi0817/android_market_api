@@ -1,4 +1,4 @@
-# About Android Market API [![Build Status](https://travis-ci.org/drecom/android_market_api.png)](https://travis-ci.org/drecom/android_market_api)
+# About Android Market API [![Build Status](https://travis-ci.org/drecom/android_market_api.png)](https://travis-ci.org/drecom/android_market_api) [![Coverage Status](https://coveralls.io/repos/drecom/android_market_api/badge.png?branch=master)](https://coveralls.io/r/drecom/android_market_api)
 
 ## What is Android Market API
 
