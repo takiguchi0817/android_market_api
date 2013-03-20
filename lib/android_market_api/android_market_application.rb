@@ -9,6 +9,7 @@ require 'rubygems'
 require 'open-uri'
 require 'hpricot'
 require File.expand_path(File.dirname(__FILE__) + "/util")
+require File.dirname(__FILE__) + "/android_market_application_review"
 
 class AndroidMarketApplication
 
@@ -67,6 +68,28 @@ class AndroidMarketApplication
     puts "-------------------------------------------------------------"
   end
 
+  def fetch_review(force_refresh=false)
+    review_list = []
+    if @language != "ja"
+      puts "Only support ja"
+      return review_list
+    end
+
+    if force_refresh or !@doc
+      @doc = get_android_market_doc
+    end
+
+    review_doc_list = (@doc/"div[@class='review-body-column goog-inline-block']")
+    if review_doc_list
+      review_doc_list.each do |review_doc|
+        review = AndroidMarketApplicationReview.new(review_doc)
+        review_list.push(review)
+      end
+    end
+
+    return review_list
+  end
+
   private
 
   ############################################
@@ -74,9 +97,7 @@ class AndroidMarketApplication
   ############################################
   def parse_in_android_market
 
-    url="https://play.google.com/store/apps/details?id=#{@package}&hl=#{@language}"
-    puts "Getting URL="+url if @@debug
-    doc = Hpricot(get_content(url))
+    doc = get_android_market_doc
     fill_current_version(doc.root)
     fill_rating_value(doc.root)
     fill_rating_count(doc.root)
@@ -94,7 +115,14 @@ class AndroidMarketApplication
     fill_developer_name(doc.root)
     fill_icon(doc.root)
     fill_changed_text(doc.root)
+    @doc = doc
 
+  end
+
+  def get_android_market_doc
+    url="https://play.google.com/store/apps/details?id=#{@package}&hl=#{@language}"
+    puts "Getting URL="+url if @@debug
+    Hpricot(get_content(url))
   end
 
   def fill_application_name(doc)
