@@ -25,6 +25,17 @@ class AndroidMarketApplicationReview
     puts "-------------------------------------------------------------"
   end
 
+  def to_hash
+    {
+      "author" => @author.to_s,
+      "app version" => @app_version,
+      "date" => @date.to_s,
+      "title" => @title.to_s,
+      "text" => @text.to_s,
+      "rating" => @rating.to_s
+    }
+  end
+
   private
 
   def parse_review_doc(doc)
